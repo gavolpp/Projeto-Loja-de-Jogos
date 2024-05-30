@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-//Classe Cliente que herda de Pessoa e implementa IPessoa
+
 public class Cliente extends Pessoa implements IPessoa{
     private double cpf;
     private String endereco;
@@ -7,7 +7,6 @@ public class Cliente extends Pessoa implements IPessoa{
 
     ArrayList<Cliente> clientes = new ArrayList<>();
 
-    //construtor com tratamento de excessão
     public Cliente(String nome, int idade, double cpf, String endereco, double saldo)
     {
         super(nome, idade);
@@ -30,11 +29,11 @@ public class Cliente extends Pessoa implements IPessoa{
     @Override
     public void exibir()
     {
-        System.out.println("Nome: "+ nome );
+        System.out.println("\nNome: "+ nome );
         System.out.println("Idade: "+ idade);
         System.out.println("CPF: "+ cpf);
         System.out.println("Endereço: "+ endereco);
-        System.out.println("Saldo: "+ saldo);
+        System.out.println("Saldo: "+ saldo + "\n");
     }
 
     public double getCpf() {

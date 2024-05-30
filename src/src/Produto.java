@@ -1,15 +1,11 @@
-//Classe Abstrata Produto
-public class Produto {
-    private String nome;
-    private double preco;
-    //tipo pode ser console, jogo ou acessorio
-    private String tipo = "";
-    private String descricao;
-    private String dataLancamento;
-    //estado pode ser novo ou usado
-    private String estado = "";
+public abstract class Produto {
+    protected double preco;
+    protected String tipo = "";
+    protected String descricao;
+    protected String dataLancamento;
+    protected String estado = "";
 
-    public Produto(String nome, double preco, String descricao, String dataLancamento)
+    public Produto(double preco, String descricao, String dataLancamento)
     {
 
     }

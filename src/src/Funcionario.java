@@ -1,47 +1,22 @@
-import java.util.ArrayList;
-//Classe funcionario que herda de Pessoa e implementa IPessoa
 public class Funcionario extends Pessoa implements IPessoa {
     private double cpf;
     private double salario;
-    private double telefone;
+    private int telefone;
 
-
-
-    //construtor com tratamento de excessão
-    public Funcionario (String nome, int idade, double cpf, double salario, double telefone) {
+    public Funcionario(String nome, int idade, double cpf, double salario, int telefone) {
         super(nome, idade);
-        this.cpf = cpf;
-        this.salario = salario;
-        this.telefone = telefone;
-        if(idade<=0)
-            throw new IllegalArgumentException("Idade Invalida");
-        if(nome == null)
-            throw new IllegalArgumentException("Nome deve ser preenchido");
-        if(cpf<=0)
-            throw new IllegalArgumentException("Cpf deve ser preenchido");
-        if(salario<=0)
-            throw new IllegalArgumentException("Salario Inválido");
-        if(telefone<0)
-            throw new IllegalArgumentException("Telefone Inválido");
+        setCpf(cpf);
+        setSalario(salario);
+        setTelefone(telefone);
     }
 
-    //função implementada de IPessoa
-    @Override
-    public void exibir() {
-        System.out.println("Nome: " + nome);
-        System.out.println("Idade: " + idade);
-        System.out.println("CPF: " + cpf);
-        System.out.println("Salário: " + salario);
-        System.out.println("Telefone: " + telefone);
-    }
-//getters and setters
+    // Getters e Setters
     public double getCpf() {
         return cpf;
     }
 
     public void setCpf(double cpf) {
-        if (cpf <= 0)
-            throw new IllegalArgumentException("CPF deve ser preenchido");
+        if (cpf <= 0) throw new IllegalArgumentException("CPF deve ser preenchido");
         this.cpf = cpf;
     }
 
@@ -50,19 +25,24 @@ public class Funcionario extends Pessoa implements IPessoa {
     }
 
     public void setSalario(double salario) {
-        if (salario <=0)
-            throw new IllegalArgumentException("Sálario deve ser preenchido");
+        if (salario <= 0) throw new IllegalArgumentException("Salário deve ser preenchido");
         this.salario = salario;
     }
 
-    public double getTelefone() {
+    public int getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(double telefone) {
-        if (telefone <=0)
-            throw new IllegalArgumentException("Sálario deve ser preenchido");
+    public void setTelefone(int telefone) {
+        if (telefone <= 0) throw new IllegalArgumentException("Telefone deve ser preenchido");
         this.telefone = telefone;
     }
 
+    public void exibir() {
+        System.out.println("Nome: " + nome);
+        System.out.println("Idade: " + idade);
+        System.out.println("CPF: " + cpf);
+        System.out.println("Salário: " + salario);
+        System.out.println("Telefone: " + telefone);
+    }
 }

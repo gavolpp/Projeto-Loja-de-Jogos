@@ -16,7 +16,19 @@ public class Cadastro {
     }
 
     public void removerClientePorCPF(double cpf) {
-        clientes.removeIf(cliente -> cliente.getCpf() == (cpf));
+        Cliente clienteRemover = null;
+        for (Cliente cliente : clientes) {
+            if (cliente.getCpf() == cpf) {
+                clienteRemover = cliente;
+                break;
+            }
+        }
+        if (clienteRemover != null) {
+            clientes.remove(clienteRemover);
+            System.out.println("Cliente removido com sucesso.");
+        } else {
+            System.out.println("Cliente não encontrado.");
+        }
     }
 
     public void exibirClientes() {
@@ -31,7 +43,19 @@ public class Cadastro {
     }
 
     public void removerFuncionarioPorCPF(double cpf) {
-        funcionarios.removeIf(funcionario -> funcionario.getCpf() == (cpf));
+        Funcionario funcionarioRemover = null;
+        for (Funcionario funcionario : funcionarios) {
+            if (funcionario.getCpf() == cpf) {
+                funcionarioRemover = funcionario;
+                break;
+            }
+        }
+        if (funcionarioRemover != null) {
+            funcionarios.remove(funcionarioRemover);
+            System.out.println("Funcionário removido com sucesso.");
+        } else {
+            System.out.println("Funcionário não encontrado.");
+        }
     }
 
     public void exibirFuncionarios() {
@@ -44,7 +68,4 @@ public class Cadastro {
     public void adicionarProduto(Produto produto) {
         produtos.add(produto);
     }
-
-
-
 }
