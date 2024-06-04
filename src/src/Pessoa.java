@@ -4,10 +4,12 @@ public abstract class Pessoa {
     protected int idade;
     protected String nome;
 
-    //Construtor Vazio
+    //Construtor
     public Pessoa(String nome, int idade) {
-
+        this.nome = nome;
+        this.idade = idade;
     }
+
 
     //Getters and Setters
     public int getIdade() {

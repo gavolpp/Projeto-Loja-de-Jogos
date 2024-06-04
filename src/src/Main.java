@@ -53,27 +53,23 @@ public class Main {
         opcao = scanner.nextInt();
         scanner.nextLine();
         switch (opcao) {
-            case 1:
-                cadastrarCliente();
+            case 1: cadastrarCliente();
                 break;
-            case 2:
-                excluirCliente();
+            case 2: excluirCliente();
                 break;
-            case 3:
-                buscarCliente();
+            case 3: buscarCliente();
                 break;
-            case 4:
-                exibirClientes();
+            case 4: exibirClientes();
                 break;
-            case 5:
-                relatorioClientes();
+            case 5: relatorioClientes();
                 break;
-            case 0:
-                menu();
+            case 0: menu();
                 break;
             default:
                 System.out.println("Valor inválido");
         }
+
+
     }
 
     private void painelFuncionario(){
@@ -88,20 +84,15 @@ public class Main {
         opcao = scanner.nextInt();
         scanner.nextLine();
         switch (opcao) {
-            case 1:
-                cadastrarFuncionario();
+            case 1: cadastrarFuncionario();
                 break;
-            case 2:
-                excluirFuncionario();
+            case 2: excluirFuncionario();
                 break;
-            case 3:
-                buscarFuncionario();
+            case 3: buscarFuncionario();
                 break;
-            case 4:
-                exibirFuncionarios();
+            case 4: exibirFuncionarios();
                 break;
-            case 0:
-                menu();
+            case 0: menu();
                 break;
             default:
                 System.out.println("Valor inválido");
@@ -121,23 +112,17 @@ public class Main {
         opcao = scanner.nextInt();
         scanner.nextLine();
         switch (opcao) {
-            case 1:
-                cadastrarProduto();
+            case 1: cadastrarProduto();
                 break;
-            case 2:
-                excluirProduto();
+            case 2: excluirProduto();
                 break;
-            case 3:
-                buscarProduto();
+            case 3: buscarProduto();
                 break;
-            case 4:
-                exibirProdutos();
+            case 4: exibirProdutos();
                 break;
-            case 5:
-                relatorioProdutos();
+            case 5: relatorioProdutos();
                 break;
-            case 0:
-                menu();
+            case 0: menu();
                 break;
             default:
                 System.out.println("Valor inválido");
@@ -387,7 +372,7 @@ public class Main {
             return;
         }
 
-        Produto produto = new Console(codigo, preco, descricao, dataLancamento, estado);
+        Produto produto = new Produto(codigo, preco, descricao, dataLancamento, estado);
         produtos.add(produto);
         System.out.println("Produto cadastrado com sucesso.\n");
     }
