@@ -1,11 +1,7 @@
-import java.util.ArrayList;
-
 public class Cliente extends Pessoa implements IPessoa{
     private double cpf;
     private String endereco;
     private double saldo;
-
-    ArrayList<Cliente> clientes = new ArrayList<>();
 
     public Cliente(String nome, int idade, double cpf, String endereco, double saldo)
     {
@@ -13,17 +9,6 @@ public class Cliente extends Pessoa implements IPessoa{
         this.cpf = cpf;
         this.endereco = endereco;
         this.saldo = saldo;
-        if(idade<=0)
-            throw new IllegalArgumentException("Idade Invalida");
-        if(nome == null)
-            throw new IllegalArgumentException("Nome deve ser preenchido");
-        if(cpf<=0)
-            throw new IllegalArgumentException("Cpf deve ser preenchido");
-        if(endereco==null)
-            throw new IllegalArgumentException("Endereço deve ser preenchido");
-        if(saldo<0)
-            throw new IllegalArgumentException("Saldo Invalido");
-
     }
 
     @Override
@@ -40,29 +25,8 @@ public class Cliente extends Pessoa implements IPessoa{
         return cpf;
     }
 
-    public void setCpf(double cpf) {
-        if(cpf<=0)
-            throw new IllegalArgumentException("Cpf deve ser preenchido");
-        this.cpf = cpf;
-    }
-
     public String getEndereco() {
         return endereco;
     }
-
-    public void setEndereco(String endereco) {
-        if(endereco==null)
-            throw new IllegalArgumentException("Endereço deve ser preenchido");
-        this.endereco = endereco;
-    }
-
-    public double getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(double saldo) {
-        if(saldo<0)
-            throw new IllegalArgumentException("Saldo Invalido");
-        this.saldo = saldo;
-    }
 }
+

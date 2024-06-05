@@ -196,7 +196,32 @@ public class Main {
     }
 
     private void buscarCliente() {
-        System.out.print("\nDigite parte do nome do cliente: ");
+        System.out.println("\nOpções de busca de Cliente:");
+        System.out.println("1. Buscar por nome");
+        System.out.println("2. Buscar por cpf");
+        System.out.println("0. Voltar");
+        System.out.print("Escolha uma opção: ");
+        int opcao = scanner.nextInt();
+        scanner.nextLine();
+        switch(opcao) {
+            case 1:
+                buscNomeCliente();
+                break;
+            case 2:
+                buscCpfCliente();
+                break;
+            case 0:
+                painelCliente();
+                break;
+            default:
+                System.out.println("\nInsira uma opção válida\n");
+                break;
+        }
+    }
+
+    private void buscNomeCliente()
+    {
+        System.out.print("\nDigite parte ou o nome inteiro do funcionário: ");
         String parteDoNome = scanner.nextLine();
         boolean encontrado = false;
         for (Cliente cliente : clientes) {
@@ -206,8 +231,23 @@ public class Main {
             }
         }
         if (!encontrado) {
-            System.out.println("Nenhum cliente encontrado com esse nome.\n");
+            System.out.println("Nenhum Cliente encontrado com esse nome.\n");
         }
+
+    }
+
+    private void buscCpfCliente()
+    {
+        System.out.print("\nCPF do funcionário a ser buscado: ");
+        double cpf = scanner.nextDouble();
+        scanner.nextLine();
+        for (Cliente cliente : clientes) {
+            if (cliente.getCpf() == cpf) {
+                cliente.exibir();
+                return;
+            }
+        }
+        System.out.println("Cliente não encontrado.\n");
     }
 
 
@@ -217,11 +257,7 @@ public class Main {
             return;
         }
         for (Cliente cliente : clientes) {
-            System.out.println("\nNome: " + cliente.getNome());
-            System.out.println("Idade: " + cliente.getIdade());
-            System.out.println("CPF: " + cliente.getCpf());
-            System.out.println("Endereço: " + cliente.getEndereco());
-            System.out.println("Saldo: " + cliente.getSaldo());
+            cliente.exibir();
             System.out.println();
         }
     }
@@ -298,16 +334,56 @@ public class Main {
 
 
     private void buscarFuncionario() {
+        System.out.println("\nOpções de busca de Funcionários:");
+        System.out.println("1. Buscar por nome");
+        System.out.println("2. Buscar por cpf");
+        System.out.println("3.Buscar por Telefone");
+        System.out.println("0. Voltar");
+        System.out.print("Escolha uma opção: ");
+        int opcao = scanner.nextInt();
+        scanner.nextLine();
+        switch(opcao) {
+            case 1:
+                buscFuncNome();
+                break;
+            case 2:
+                buscFuncCpf();
+                break;
+            case 3: buscFuncTel();
+                break;
+            case 0: painelFuncionario();
+                break;
+            default:
+                System.out.println("\nInsira uma opção válida\n");
+                break;
+        }
+    }
+
+    private void buscFuncNome()
+    {
+        System.out.print("\nDigite parte ou o nome inteiro do funcionário: ");
+        String parteDoNome = scanner.nextLine();
+        boolean encontrado = false;
+        for (Funcionario funcionario : funcionarios) {
+            if (funcionario.getNome().toLowerCase().contains(parteDoNome.toLowerCase())) {
+                funcionario.exibir();
+                encontrado = true;
+            }
+        }
+        if (!encontrado) {
+            System.out.println("Nenhum funcionário encontrado com esse nome.\n");
+        }
+
+    }
+
+    private void buscFuncCpf()
+    {
         System.out.print("\nCPF do funcionário a ser buscado: ");
         double cpf = scanner.nextDouble();
         scanner.nextLine();
         for (Funcionario funcionario : funcionarios) {
             if (funcionario.getCpf() == cpf) {
-                System.out.println("\nNome: " + funcionario.getNome());
-                System.out.println("Idade: " + funcionario.getIdade());
-                System.out.println("CPF: " + funcionario.getCpf());
-                System.out.println("Salário: " + funcionario.getSalario());
-                System.out.println("Telefone: " + funcionario.getTelefone());
+                funcionario.exibir();
                 System.out.println();
                 return;
             }
@@ -315,6 +391,20 @@ public class Main {
         System.out.println("Funcionário não encontrado.\n");
     }
 
+    private void buscFuncTel()
+    {
+        System.out.print("\nTelefone do funcionário a ser buscado: ");
+        double tel = scanner.nextDouble();
+        scanner.nextLine();
+        for (Funcionario funcionario : funcionarios) {
+            if (funcionario.getTelefone() == tel) {
+                funcionario.exibir();
+                System.out.println();
+                return;
+            }
+        }
+        System.out.println("Funcionário não encontrado.\n");
+    }
 
     private void exibirFuncionarios() {
         if (funcionarios.isEmpty()) {
@@ -322,11 +412,7 @@ public class Main {
             return;
         }
         for (Funcionario funcionario : funcionarios) {
-            System.out.println("\nNome: " + funcionario.getNome());
-            System.out.println("Idade: " + funcionario.getIdade());
-            System.out.println("CPF: " + funcionario.getCpf());
-            System.out.println("Salário: " + funcionario.getSalario());
-            System.out.println("Telefone: " + funcionario.getTelefone());
+            funcionario.exibir();
             System.out.println();
         }
     }
@@ -502,7 +588,7 @@ public class Main {
             return null; // Retorna null se não houver clientes cadastrados
         }
 
-        Cliente maisVelho = clientes.get(0); // Inicializa com o primeiro cliente
+        Cliente maisVelho = clientes.getFirst(); // Inicializa com o primeiro cliente
         for (Cliente cliente : clientes) {
             if (cliente.getIdade() > maisVelho.getIdade()) {
                 maisVelho = cliente;
